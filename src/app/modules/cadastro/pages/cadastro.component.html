@@ -1,0 +1,141 @@
+<mat-toolbar>
+    <span>
+        <img class="mr-5" src="/assets/header.png" style="height: 45px; width: auto;">
+    </span>
+</mat-toolbar>
+<div class="row mt-5">
+    <mat-card class="col s10 m8 l6 offset-s1 offset-m2 offset-l3 p-3">
+        <form [formGroup]="formularioDeCadastro" class="p-2">
+            <div class="row">
+                <div class="col s12 m6 pt-3">
+                    <h1>
+                        FICHA DE INSCRIÇÃO
+                    </h1>
+                    <h3>
+                        Cadastro escolar 2021/2022
+                    </h3>
+                </div>
+                <div class="col s12 m6">
+                    <img src="/assets/logo.jpg" class="right" style="height: 100px;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <button mat-flat-button color="primary" class="right" (click)="save()"
+                        [disabled]="!formularioDeCadastro.valid">
+                        <mat-icon matSuffix>save</mat-icon>
+                        Salvar
+                    </button>
+                    <button mat-flat-button color="warn" class="left" type="button">
+                        <mat-icon matSuffix>close</mat-icon>
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+            <div class="row mb-0">
+                <mat-form-field appearance="fill" class="col s12">
+                    <mat-label>Nome completo</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="nomeCompleto">
+                    <mat-error>Nome completo <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="col s12 m6">
+                    <mat-label>Data de nascimento</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error>Data de nascimento <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="col s12 m6">
+                    <mat-label>Idade</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="idade">
+                    <mat-error>Idade <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col s12">
+                    <mat-label>Orientação sexual</mat-label>
+                    <mat-select formControlName="orientacaoSexual">
+                        <mat-option value="masc">Masculino</mat-option>
+                        <mat-option value="fem">Feminino</mat-option>
+                        <mat-option value="neutro">Neutro</mat-option>
+                    </mat-select>
+                    <mat-error>Orientação sexual <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col s12 m6">
+                    <mat-label>Nacionalidade</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="nacionalidade">
+                    <mat-error>Nacionalidade <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col s12 m6">
+                    <mat-label>Naturalidade</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="naturalidade">
+                    <mat-error>Naturalidade <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill" class="col s12">
+                    <mat-label>Endereço completo inclusive o CEP</mat-label>
+                    <textarea cdkTextareaAutosize matInput placeholder="Ex. It makes me feel..." rows="2"
+                        formControlName="endereco"></textarea>
+                    <mat-icon matSuffix>map</mat-icon>
+                    <mat-error>Endereço <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col s12 m6">
+                    <mat-label>Contato 01</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="phone1">
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <mat-error>Contato 01 é <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col s12 m6">
+                    <mat-label>Contato 02</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="phone2">
+                    <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="col s12">
+                    <mat-label>Nome do mãe, pai ou responsável</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="responsavel">
+                </mat-form-field>
+            </div>
+            <div class="row mb-0">
+                <div class="col s12 l6 p-3">
+                    <button (click)="comprovanteResidencial.click()" mat-button mat-raised-button matBadge="1"
+                        class="col s12" [matBadgeHidden]="!getTemComprovante()">
+                        Comprovante de residência
+                    </button>
+                </div>
+                <div class="col s12 l6 p-3">
+                    <button (click)="declaracaoDeficiencia.click()" mat-button mat-raised-button matBadge="1"
+                        class="col s12" [matBadgeHidden]="!getTemDeclaracao()" color="success">
+                        Declaração de candidato com deficiência
+                    </button>
+                </div>
+                <div class="row mb-0">
+                    <div class="col s12 16 p-3">
+                        <button (click)="documentodoResponsavel.click()" mat-button mat-raised-button matBadge="1"
+                        class="col s12" [matBadgeHidden]="!getTemDocumento()" color="success">
+                        Documento do responsavel
+                    </button>
+                    </div>
+    
+                    <div class="col s12 16 p-3">
+                        <button (click)="documentodoAluno.click()" mat-button mat-raised-button matBadge="1"
+                        class="col s12" [matBadgeHidden]="!getTemRegistro()" color="success">
+                        Certidão de nascimento/Registro Geral do Aluno
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <input style="display: none;" type="file" #comprovanteResidencial
+                (change)="setcomprovanteResidencial($event)">
+            <input style="display: none;" type="file" #declaracaoDeficiencia
+                (change)="setdeclaracaoDeficiencia($event)">
+                <input style="display: none;" type="file" #documentodoResponsavel
+                (change)="setdocumentoResponsavel($event)">
+            <input style="display: none;" type="file" #documentodoAluno
+                (change)="setdocumentoAluno($event)">
+        </form>
+    </mat-card>
+</div>

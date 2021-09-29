@@ -1,1 +1,2 @@
-# paginainscri-o
+# arquivosAlunos
+Diretório para aplicações das aulas
