@@ -8,7 +8,7 @@ export class CadastroService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly rotaPadrao = 'api/cadastro';
+  private readonly rotaPadrao = 'https://api.itajubadigital.com.br/api/educacao.php';
 
   async save(cadastro: any): Promise<any> {
 

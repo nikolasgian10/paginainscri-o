@@ -38,6 +38,12 @@
                     <input matInput placeholder="Placeholder" formControlName="nomeCompleto">
                     <mat-error>Nome completo <strong>obrigatório</strong></mat-error>
                 </mat-form-field>
+               
+                <mat-form-field appearance="fill" class="col s12 m6">
+                    <mat-label>CPF</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="cpf">
+                    <mat-error>CPF <strong>obrigatório</strong></mat-error>
+                </mat-form-field>
                 <mat-form-field appearance="fill" class="col s12 m6">
                     <mat-label>Data de nascimento</mat-label>
                     <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
@@ -45,18 +51,11 @@
                     <mat-datepicker #picker></mat-datepicker>
                     <mat-error>Data de nascimento <strong>obrigatório</strong></mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill" class="col s12 m6">
-                    <mat-label>Idade</mat-label>
-                    <input matInput placeholder="Placeholder" formControlName="idade">
-                    <mat-error>Idade <strong>obrigatório</strong></mat-error>
-                </mat-form-field>
-
                 <mat-form-field appearance="fill" class="col s12">
                     <mat-label>Orientação sexual</mat-label>
                     <mat-select formControlName="orientacaoSexual">
-                        <mat-option value="masc">Masculino</mat-option>
-                        <mat-option value="fem">Feminino</mat-option>
-                        <mat-option value="neutro">Neutro</mat-option>
+                        <mat-option value="1">Masculino</mat-option>
+                        <mat-option value="0">Feminino</mat-option>
                     </mat-select>
                     <mat-error>Orientação sexual <strong>obrigatório</strong></mat-error>
                 </mat-form-field>
@@ -74,10 +73,8 @@
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width" appearance="fill" class="col s12">
-                    <mat-label>Endereço completo inclusive o CEP</mat-label>
-                    <textarea cdkTextareaAutosize matInput placeholder="Ex. It makes me feel..." rows="2"
-                        formControlName="endereco"></textarea>
-                    <mat-icon matSuffix>map</mat-icon>
+                    <mat-label>Endereço</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="endereco">
                     <mat-error>Endereço <strong>obrigatório</strong></mat-error>
                 </mat-form-field>
 
@@ -98,6 +95,10 @@
                     <mat-label>Nome do mãe, pai ou responsável</mat-label>
                     <input matInput placeholder="Placeholder" formControlName="responsavel">
                 </mat-form-field>
+                <mat-form-field appearance="fill" class="col s12">
+                    <mat-label>CPF responsável</mat-label>
+                    <input matInput placeholder="Placeholder" formControlName="cpfResponsavel">
+                </mat-form-field>
             </div>
             <div class="row mb-0">
                 <div class="col s12 l6 p-3">
@@ -109,7 +110,7 @@
                 <div class="col s12 l6 p-3">
                     <button (click)="declaracaoDeficiencia.click()" mat-button mat-raised-button matBadge="1"
                         class="col s12" [matBadgeHidden]="!getTemDeclaracao()" color="success">
-                        Declaração de candidato com deficiência
+                        Declaração de deficiência
                     </button>
                 </div>
                 <div class="row mb-0">
